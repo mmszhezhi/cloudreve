@@ -1,0 +1,34 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx-container-test
+    build: ./nginx
+    restart: always
+    sysctls:
+      - net.core.somaxconn=4096
+    ports:
+      - "5212:8081"
+      - "8060:80"
+    volumes:
+      - D:\docker_repo\src\Cloudreve-deploy\nginx\logs:/var/log/nginx
+      - D:\resources:/resources
+    depends_on:
+      - cloudreve
+
+  cloudreve:
+    container_name: Cloudreve-test
+    build: ./Cloudreve
+    restart: always
+    command: /Cloudreve/cloudreve
+    sysctls:
+      - net.core.somaxconn=4096
+    ports:
+      - "5212:5212"
+# -outer:inner
+#    extra_hosts:
+#      - "dockerhost:192.168.8.236"
+    volumes:
+      - D:\docker_repo\src\Cloudreve-deploy\Cloudreve:/Cloudreve
+
+volumes:
+  web_data:
