@@ -10,8 +10,10 @@ services:
       - "5212:8081"
       - "8060:80"
     volumes:
-      - D:\docker_repo\src\Cloudreve-deploy\nginx\logs:/var/log/nginx
-      - D:\resources:/resources
+      - /nginx/logs:/var/log/nginx
+#      - D:\docker_repo\src\Cloudreve-deploy\nginx\logs:/var/log/nginx
+#      - D:\resources:/resources
+#      - D:\resources:/resources
     depends_on:
       - cloudreve
   cloudreve:
@@ -27,7 +29,8 @@ services:
 #    extra_hosts:
 #      - "dockerhost:192.168.8.236"
     volumes:
-      - D:\docker_repo\src\Cloudreve-deploy\Cloudreve:/Cloudreve
+      - /Cloudreve:/Cloudreve
+#      - D:\docker_repo\src\Cloudreve-deploy\Cloudreve:/Cloudreve
 
 volumes:
   web_data:
