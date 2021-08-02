@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx:
-    container_name: nginx-container-test
+    container_name: nginx-web
     build: ./nginx
     restart: always
     sysctls:
@@ -14,9 +14,8 @@ services:
       - D:\resources:/resources
     depends_on:
       - cloudreve
-
   cloudreve:
-    container_name: Cloudreve-test
+    container_name: Cloudreve-web
     build: ./Cloudreve
     restart: always
     command: /Cloudreve/cloudreve
